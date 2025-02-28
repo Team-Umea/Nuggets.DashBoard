@@ -1,12 +1,18 @@
 import { Outlet } from "react-router-dom";
 import Footer from '../components/Footer'
+import Footer from "../components/footer/footer";
+import Header from "../components/Header/Header";
+
 function RootLayout() {
     return ( <>
-<header></header>
+<Header></Header>
 <main>
     <Outlet/>
 </main>
+
 < Footer />
+
+
     </> );
 }
 
