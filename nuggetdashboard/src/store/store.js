@@ -1,26 +1,29 @@
-// src/store.js
-import { configureStore } from '@reduxjs/toolkit';
+import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-// Initial state
 const initialState = {
-    savings: 0,
+  savings: 0,
 };
 
-// Reducer
-const savingsReducer = (state = initialState, action) => {
-switch (action.type) {
-    case 'SET_SAVINGS':
-    return { ...state, savings: action.payload };
-    default:
-    return state;
-}
-};
 
-// Create store
+const savingsSlice = createSlice({
+  name: 'savings',
+  initialState,
+  reducers: {
+
+    setSavings: (state, action) => {
+      state.savings = action.payload;
+    },
+  },
+});
+
+
+export const { setSavings } = savingsSlice.actions;
+
+
 const store = configureStore({
-    reducer: {
-    savings: savingsReducer,
-},
+  reducer: {
+    savings: savingsSlice.reducer,
+  },
 });
 
 export default store;
