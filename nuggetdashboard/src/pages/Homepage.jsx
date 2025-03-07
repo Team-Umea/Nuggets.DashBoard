@@ -1,4 +1,4 @@
-import FormComponent from "../components/Form";
+
 import HeroVideo from '../components/Herovideo/HeroVideo'
 
 
@@ -8,7 +8,7 @@ function HomePage() {
     <div>
   
       < HeroVideo />
-      <FormComponent></FormComponent>
+
     </div>
   );
 }
