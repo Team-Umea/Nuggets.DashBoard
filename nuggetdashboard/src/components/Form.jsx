@@ -1,28 +1,34 @@
 function FormComponent() {
   return (
     <form>
-      <div class="mb-3">
-        <label for="Email" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="Email" className="form-label">
           Email address
         </label>
         <input
           type="email"
-          class="form-control"
+          className="form-control"
           id="exampleFormControlInput1"
           placeholder="name@example.com"
         />
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">
           Message
         </label>
         <textarea
-          class="form-control"
+          className="form-control"
           id="exampleFormControlTextarea1"
           placeholder="Your message"
           rows="3"
         ></textarea>
       </div>
+      <button
+        style={{ borderRadius: "8px" }}
+        className="text-white bg-blue-900 p-2 hover:bg-blue-600"
+      >
+        Submit
+      </button>
     </form>
   );
 }

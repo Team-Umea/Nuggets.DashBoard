@@ -35,7 +35,7 @@ function SaveCalcForm() {
   return (
     <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
       <div className="flex justify-center items-center mb-4">
-        <div className="bg-blue-500 text-white text-lg font-bold px-4 py-2 rounded-lg">
+        <div className=" text-gray-800 text-lg font-bold px-4 py-2 rounded-lg">
           Test our savings calculator
         </div>
       </div>

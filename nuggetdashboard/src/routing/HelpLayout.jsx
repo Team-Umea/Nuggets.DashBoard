@@ -3,16 +3,27 @@ import { Outlet, NavLink } from "react-router-dom";
 export default function HelpLayout() {
   return (
     <>
-      <nav>
+      <nav className="flex justify-center gap-7 mb-4">
         <NavLink
           to="faq"
-          className={
-            "bg-blue-700 p-2 rounded-lg text-white hover:bg-blue-700/70 m-4"
+          className={({ isActive }) =>
+            `text-white hover:bg-blue-600 font-bold p-2 rounded-lg border-1 ${
+              isActive ? "bg-blue-600" : "bg-blue-900"
+            }`
           }
         >
           FAQ
         </NavLink>
-        <NavLink to="contact">Contact</NavLink>
+        <NavLink
+          to="contact"
+          className={({ isActive }) =>
+            `text-white hover:bg-blue-600 font-bold p-2 rounded-lg border-1 ${
+              isActive ? " bg-blue-600" : "bg-blue-900"
+            }`
+          }
+        >
+          Contact
+        </NavLink>
       </nav>
       <Outlet />
     </>
