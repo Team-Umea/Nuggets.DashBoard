@@ -1,28 +1,13 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
-
-const initialState = {
-  savings: 0,
-};
+import {  configureStore }
+from '@reduxjs/toolkit';
+import indexSavingSlice from "./indexSlice"
 
 
-const savingsSlice = createSlice({
-  name: 'savings',
-  initialState,
-  reducers: {
-
-    setSavings: (state, action) => {
-      state.savings = action.payload;
-    },
-  },
-});
-
-
-export const { setSavings } = savingsSlice.actions;
 
 
 const store = configureStore({
   reducer: {
-    savings: savingsSlice.reducer,
+    savings: indexSavingSlice
   },
 });
 

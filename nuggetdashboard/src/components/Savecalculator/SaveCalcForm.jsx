@@ -1,5 +1,12 @@
 import { useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import {indexGrowth} from "../../store/indexSlice"
 function SaveCalcForm() {
+    const dispatch = useDispatch();
+    const [startAmount ,setStartAmount] = useState(10000)
+    const [monthlyDeposit, setMonthlyDeposit] = useState(1000)
+    const [years, setYears] = useState(1)
+    const annualReturn = 7;
     const calculateFutureValue = (startAmount, monthlyDeposit, years, annualReturn) => {
         const r = annualReturn / 100 / 12; // Månatlig avkastning
         const n = years * 12; // Totala månader
@@ -21,13 +28,8 @@ function SaveCalcForm() {
         setYears(e.target.value)
 
     }
-
-    const [startAmount ,setStartAmount] = useState(10000)
-    const [monthlyDeposit, setMonthlyDeposit] = useState(1000)
-    const [years, setYears] = useState(1)
-    const annualReturn = 7;
-    // futurevalue ska ligga i global state 
     const indexFutureValue = calculateFutureValue(startAmount, monthlyDeposit, years, annualReturn);
+    dispatch(indexGrowth(Math.round(indexFutureValue)))
    
 
     return (
