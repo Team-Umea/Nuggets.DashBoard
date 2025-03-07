@@ -5,7 +5,7 @@ const HeroVideo = () => {
   return (
     <div className="relative overflow-hidden">
       <video className="w-full h-auto" autoPlay loop muted>
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source src="./public/MyVideo.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 text-white text-center">
