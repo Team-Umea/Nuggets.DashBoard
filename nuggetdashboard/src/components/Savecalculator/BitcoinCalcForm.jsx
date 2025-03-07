@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { indexGrowth } from "../../store/indexSlice";
-
-function SaveCalcForm() {
+import {bitcoinGrowth} from "../../store/bitcoinSlice"
+function BitCoinCalcForm() {
   const dispatch = useDispatch();
   const [startAmount, setStartAmount] = useState(10000);
   const [monthlyDeposit, setMonthlyDeposit] = useState(1000);
   const [years, setYears] = useState(1);
-  const annualReturn = 7;
+  const annualReturn = 30;
   const calculateFutureValue = (
     startAmount,
     monthlyDeposit,
@@ -24,16 +23,16 @@ function SaveCalcForm() {
     return futureValue;
   };
 
-  const indexFutureValue = calculateFutureValue(
+  const bitcoinFutureValue = calculateFutureValue(
     startAmount,
     monthlyDeposit,
     years,
     annualReturn
   );
-  dispatch(indexGrowth(Math.round(indexFutureValue)));
+  dispatch(bitcoinGrowth(Math.round(bitcoinFutureValue)));
 
-  return (
-    <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+    return (
+      <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
       <div className="flex justify-center items-center mb-4">
         <div className="bg-blue-500 text-white text-lg font-bold px-4 py-2 rounded-lg">
           Test our savings calculator
@@ -42,12 +41,12 @@ function SaveCalcForm() {
       <h3 className="text-xl font-semibold text-gray-800 mb-2"></h3>
       <h5 className="text-3xl font-bold text-green-600">
         {" "}
-        ${Math.round(indexFutureValue)}
+        ${Math.round(bitcoinFutureValue)}
       </h5>
       <p className="text-gray-500 text-sm mb-4">
         Of which $
         {Math.round(
-          indexFutureValue - (startAmount + monthlyDeposit * years * 12)
+          bitcoinFutureValue - (startAmount + monthlyDeposit * years * 12)
         )}{" "}
         in return
       </p>
@@ -100,7 +99,7 @@ function SaveCalcForm() {
         *We have calculated that you will get an anual increase of 7% per year.
       </p>
     </div>
-  );
+      );
 }
 
-export default SaveCalcForm;
+export default BitCoinCalcForm;
