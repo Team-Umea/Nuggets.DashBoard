@@ -97,7 +97,7 @@ function SaveCalcForm() {
         </div>
       </form>
       <p className="text-xs text-gray-500 mt-4">
-        *We have calculated that you will get an anual increase of 7% per year.
+        *We have calculated that you will get an annual increase of 7% per year.
       </p>
     </div>
   );
