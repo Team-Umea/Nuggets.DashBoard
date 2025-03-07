@@ -4,7 +4,6 @@ function HomePage() {
   return (
     <div>
       <HeroComponent></HeroComponent>
-      <FormComponent></FormComponent>
     </div>
   );
 }
