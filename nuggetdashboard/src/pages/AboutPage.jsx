@@ -1,7 +1,20 @@
+import HelpLayout from "../routing/HelpLayout";
+
 function AboutPage() {
-    return ( <div>
-        <h1>AboutPage</h1>
-    </div> );
+  return (
+    <>
+      <h2>About us</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
+        pariatur.
+        <br />
+        <br />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi dolorum
+        illo perferendis?
+      </p>
+      <HelpLayout />
+    </>
+  );
 }
 
 export default AboutPage;
