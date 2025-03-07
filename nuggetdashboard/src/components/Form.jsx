@@ -2,7 +2,7 @@ function FormComponent() {
   return (
     <form>
       <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">
+        <label for="Email" class="form-label">
           Email address
         </label>
         <input
@@ -14,11 +14,12 @@ function FormComponent() {
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">
-          Example textarea
+          Message
         </label>
         <textarea
           class="form-control"
           id="exampleFormControlTextarea1"
+          placeholder="Your message"
           rows="3"
         ></textarea>
       </div>

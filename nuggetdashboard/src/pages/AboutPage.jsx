@@ -2,7 +2,7 @@ import HelpLayout from "../routing/HelpLayout";
 
 function AboutPage() {
   return (
-    <>
+    <div className="text-center">
       <h2>About us</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
@@ -13,7 +13,7 @@ function AboutPage() {
         illo perferendis?
       </p>
       <HelpLayout />
-    </>
+    </div>
   );
 }
 
