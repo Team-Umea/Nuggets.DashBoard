@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { indexGrowth } from "../../store/indexSlice";
+
 function SaveCalcForm() {
   const dispatch = useDispatch();
   const [startAmount, setStartAmount] = useState(10000);
@@ -22,16 +23,7 @@ function SaveCalcForm() {
 
     return futureValue;
   };
-  const handleStartAmount = (e) => {
-    setStartAmount(e.target.value);
-  };
 
-  const handleMonthlyDeposit = (e) => {
-    setMonthlyDeposit(e.target.value);
-  };
-  const handleYears = (e) => {
-    setYears(e.target.value);
-  };
   const indexFutureValue = calculateFutureValue(
     startAmount,
     monthlyDeposit,
