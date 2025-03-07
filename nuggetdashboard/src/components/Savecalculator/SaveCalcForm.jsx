@@ -1,12 +1,7 @@
 import { useState } from "react";
 
 function SaveCalcForm() {
-  const calculateFutureValue = (
-    startAmount,
-    monthlyDeposit,
-    years,
-    annualReturn
-  ) => {
+  const calculateFutureValue = (startAmount, monthlyDeposit, years, annualReturn) => {
     const r = annualReturn / 100 / 12; // Månatlig avkastning
     const n = years * 12; // Totala månader
 
@@ -19,74 +14,58 @@ function SaveCalcForm() {
 
   const [startAmount, setStartAmount] = useState(10000);
   const [monthlyDeposit, setMonthlyDeposit] = useState(1000);
-  const [years, setYears] = useState(1);
+  const [years, setYears] = useState(5);
   const annualReturn = 7;
-  const indexFutureValue = calculateFutureValue(
-    startAmount,
-    monthlyDeposit,
-    years,
-    annualReturn
-  );
+  const indexFutureValue = calculateFutureValue(startAmount, monthlyDeposit, years, annualReturn);
 
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4">
-        Global Index Saving Calculator
-      </h3>
-      <h5 className="text-2xl font-bold text-green-600">
-        {Math.round(indexFutureValue)}$
-      </h5>
-
+    <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+      <div className="flex justify-center items-center mb-4">
+        <div className="bg-blue-500 text-white text-lg font-bold px-4 py-2 rounded-lg">Test our savings calculator</div>
+      </div>
+      <h3 className="text-xl font-semibold text-gray-800 mb-2"></h3>
+      <h5 className="text-3xl font-bold text-green-600"> ${Math.round(indexFutureValue)}</h5>
+      <p className="text-gray-500 text-sm mb-4">Of which ${Math.round(indexFutureValue - (startAmount + monthlyDeposit * years * 12))}  in return</p>
+      
       <form className="space-y-4 mt-4">
-        <div>
-          <label
-            htmlFor="startAmount"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Start Value:
-          </label>
+        <div className="bg-gray-100 p-3 rounded-lg">
+          <label className="text-sm font-medium text-gray-700">Monthly Saving: ${monthlyDeposit}</label>
           <input
-            type="number"
-            id="startAmount"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 p-2"
-            value={startAmount}
-            onChange={(e) => setStartAmount(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="monthlyDeposit"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Monthly Savings:
-          </label>
-          <input
-            type="number"
-            id="monthlyDeposit"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 p-2"
+            type="range"
+            min="100"
+            max="1500"
+            step="50"
             value={monthlyDeposit}
-            onChange={(e) => setMonthlyDeposit(e.target.value)}
-            required
+            onChange={(e) => setMonthlyDeposit(Number(e.target.value))}
+            className="w-full mt-2"
           />
         </div>
-        <div>
-          <label
-            htmlFor="savingYears"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Saving Years:
-          </label>
+        <div className="bg-gray-100 p-3 rounded-lg">
+          <label className="text-sm font-medium text-gray-700">Starting Amount: ${startAmount}</label>
           <input
-            type="number"
-            id="savingYears"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 p-2"
+            type="range"
+            min="0"
+            max="100000"
+            step="500"
+            value={startAmount}
+            onChange={(e) => setStartAmount(Number(e.target.value))}
+            className="w-full mt-2"
+          />
+        </div>
+        <div className="bg-gray-100 p-3 rounded-lg">
+          <label className="text-sm font-medium text-gray-700">Saving Time: {years} Years</label>
+          <input
+            type="range"
+            min="1"
+            max="50"
+            step="1"
             value={years}
-            onChange={(e) => setYears(e.target.value)}
-            required
+            onChange={(e) => setYears(Number(e.target.value))}
+            className="w-full mt-2"
           />
         </div>
       </form>
+      <p className="text-xs text-gray-500 mt-4">*We have calculated that you will get an anual increase of 7% per year.</p>
     </div>
   );
 }
