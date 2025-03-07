@@ -1,8 +1,8 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-    return (<div>
+    return (
         <nav className="bg-gray-800">
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div className="relative flex items-center justify-between h-16">
@@ -18,22 +18,25 @@ const Navbar = () => {
                         <div className="flex-shrink-0 text-white text-lg">Min Webbplats</div>
                         <div className="hidden sm:block sm:ml-6">
                             <div className="flex space-x-4">
-                                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Hem</a>
-                                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Om oss</a>
-                                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Tjänster</a>
-                                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Kontakt</a>
+                                <NavLink to="/" className={({ isActive }) => `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'bg-gray-700 text-white' : ''}`}>
+                                    Home
+                                </NavLink>
+                                <NavLink to="/products" className={({ isActive }) => `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'bg-gray-700 text-white' : ''}`}>
+                                    Products
+                                </NavLink>
+                                <NavLink to="/calc" className={({ isActive }) => `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'bg-gray-700 text-white' : ''}`}>
+                                    Calculate Savings
+                                </NavLink>
+                                <NavLink to="/about" className={({ isActive }) => `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'bg-gray-700 text-white' : ''}`}>
+                                    About us
+                                </NavLink>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-
-    </div>
     );
 };
-
-
-
 
 export default Navbar;
