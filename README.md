@@ -34,22 +34,6 @@ npm run dev
 
 Applikationen körs nu på http://localhost:5173/.
 
-# Projektstruktur
-
-nuggetdashboard/
-│── src/
-│   ├── components/       # Återanvändbara komponenter
-│   ├── pages/            # Sidkomponenter
-│   ├── store/            # Redux store och slices
-│   ├── styles/           # CSS och Tailwind-konfiguration
-│   ├── App.jsx           # Huvudkomponenten
-│   ├── main.jsx          # Ingångspunkt för React
-│
-│── public/               # Offentliga tillgångar (bilder, ikoner, osv.)
-│── index.html            # Root HTML-fil
-│── package.json          # Projektberoenden
-│── README.md             # Dokumentation
-
 
 # Funktioner
 
