@@ -33,7 +33,7 @@ function SaveCalcForm() {
   dispatch(indexGrowth(Math.round(indexFutureValue)));
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+    <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center mt-5 mb-5">
       <div className="flex justify-center items-center mb-4">
         <div className=" text-gray-800 text-lg font-bold px-4 py-2 rounded-lg">
           Test our savings calculator

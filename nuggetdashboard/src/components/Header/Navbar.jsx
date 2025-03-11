@@ -29,8 +29,8 @@ const Navbar = () => {
               </svg>
             </button>
           </div>
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex-shrink-0 text-white text-lg">Bitcoin Bros</div>
+          <div className="flex-1 flex items-center justify-start sm:items-stretch">
+            <div className="flex-shrink-0 text-white text-lg mt-1">Bitcoin Bros</div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 <NavLink

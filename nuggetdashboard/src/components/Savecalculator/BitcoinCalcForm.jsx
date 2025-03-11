@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { bitcoinGrowth } from "../../store/bitcoinSlice";
+
+
+
+
 function BitCoinCalcForm() {
   const dispatch = useDispatch();
   const [startAmount, setStartAmount] = useState(10000);
@@ -32,7 +36,7 @@ function BitCoinCalcForm() {
   dispatch(bitcoinGrowth(Math.round(bitcoinFutureValue)));
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+    <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center mt-5 mb-5">
       <div className="flex justify-center items-center mb-4">
         <div className=" text-gray-800 text-lg font-bold px-4 py-2 rounded-lg">
           Test our savings calculator
@@ -96,7 +100,7 @@ function BitCoinCalcForm() {
         </div>
       </form>
       <p className="text-xs text-gray-500 mt-4">
-        *We have calculated that you will get an anual increase of 7% per year.
+        *We have calculated that you will get an anual increase of 100 % per year.
       </p>
     </div>
   );

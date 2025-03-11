@@ -1,5 +1,6 @@
 
 import HeroVideo from '../components/Herovideo/HeroVideo'
+import FetchBitcoinData from '../components/FetchBitcoinData/FetchBitcoinData' 
 
 
 
