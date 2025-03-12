@@ -1,12 +1,53 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // Ikoner för hamburgarmenyn
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const closeButtonRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // Håller tabbningen inom menyn
+  useEffect(() => {
+    if (isOpen) {
+      const focusableElements = menuRef.current.querySelectorAll("a");
+      const firstElement = closeButtonRef.current;
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      const handleTabKey = (e) => {
+        if (e.key === "Tab") {
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              e.preventDefault();
+              lastElement.focus();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              e.preventDefault();
+              firstElement.focus();
+            }
+          }
+        }
+      };
+
+      document.addEventListener("keydown", handleTabKey);
+
+      return () => {
+        document.removeEventListener("keydown", handleTabKey);
+      };
+    }
+  }, [isOpen]);
+
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: "Calculate Savings", path: "/calc" },
+    { name: "About us", path: "/about" },
+  ];
 
   return (
     <nav className="bg-gray-800">
@@ -18,119 +59,53 @@ const Navbar = () => {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
-                      isActive ? "bg-gray-700 text-white" : ""
-                    }`
-                  }
-                >
-                  Home
-                </NavLink>
-                <NavLink
-                  to="/products"
-                  className={({ isActive }) =>
-                    `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
-                      isActive ? "bg-gray-700 text-white" : ""
-                    }`
-                  }
-                >
-                  Products
-                </NavLink>
-                <NavLink
-                  to="/calc"
-                  className={({ isActive }) =>
-                    `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
-                      isActive ? "bg-gray-700 text-white" : ""
-                    }`
-                  }
-                >
-                  Calculate Savings
-                </NavLink>
-                <NavLink
-                  to="/about"
-                  className={({ isActive }) =>
-                    `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
-                      isActive ? "bg-gray-700 text-white" : ""
-                    }`
-                  }
-                >
-                  About us
-                </NavLink>
+                {links.map(({ name, path }) => (
+                  <NavLink
+                    key={name}
+                    to={path}
+                    className={({ isActive }) =>
+                      `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
+                        isActive ? "bg-gray-700 text-white" : ""
+                      }`
+                    }
+                  >
+                    {name}
+                  </NavLink>
+                ))}
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
             <button
+              ref={closeButtonRef}
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open Menu</span>
-              <svg
-                className="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
       {isOpen && (
-        <div className="sm:hidden" id="mobile-menu">
-          <div className="flex flex-col space-y-1 px-2 pt-2 pb-3">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive ? "bg-gray-700 text-white" : ""
-                }`
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/products"
-              className={({ isActive }) =>
-                `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive ? "bg-gray-700 text-white" : ""
-                }`
-              }
-            >
-              Products
-            </NavLink>
-            <NavLink
-              to="/calc"
-              className={({ isActive }) =>
-                `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive ? "bg-gray-700 text-white" : ""
-                }`
-              }
-            >
-              Calculate Savings
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive ? "bg-gray-700 text-white" : ""
-                }`
-              }
-            >
-              About us
-            </NavLink>
+        <div ref={menuRef} className="sm:hidden" id="mobile-menu">
+          <div className="flex flex-col space-y-1 px-2 pt-2 pb-3 text-center">
+            {links.map(({ name, path }) => (
+              <NavLink
+                key={name}
+                to={path}
+                className={({ isActive }) =>
+                  `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
+                    isActive ? "bg-gray-700 text-white" : ""
+                  }`
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                {name}
+              </NavLink>
+            ))}
           </div>
         </div>
       )}
