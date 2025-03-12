@@ -2,6 +2,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
     "@tailwindcss/vite": "^4.0.9",
+    "bootstrap": "^5.3.3",
     "daisyui": "^4.12.24",
     "framer-motion": "^12.4.10",
     "mdb-react-ui-kit": "^9.0.0",

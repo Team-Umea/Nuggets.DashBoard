@@ -15,7 +15,7 @@ import React, { useEffect, useState } from 'react';
 
 const FetchBitcoinData = () => {
     const URL = '';
-    const APIKEY = '6e4fc8a5-f0b4-4fe5-8cd8-d9575c3f6d3d';
+    const APIKEY = '';
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
