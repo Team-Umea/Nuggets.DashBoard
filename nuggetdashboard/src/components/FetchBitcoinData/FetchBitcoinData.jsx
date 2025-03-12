@@ -14,10 +14,10 @@ import React, { useEffect, useState } from 'react';
 
 
 const FetchBitcoinData = () => {
-    const URL = '/v1/cryptocurrency/info';
-    const APIKEY = '';
+    const URL = '';
+    const APIKEY = '6e4fc8a5-f0b4-4fe5-8cd8-d9575c3f6d3d';
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -27,12 +27,12 @@ const FetchBitcoinData = () => {
                 const response = await fetch(`${URL}?apiKey=${APIKEY}`);
                 
                 if (!response.ok) {
-                    const errorMessage = await response.text(); 
+                    const errorMessage = await response.text();
                     throw new Error(`Fel: ${response.status} - ${errorMessage}`);
                 }
 
                 const result = await response.json();
-                setData(result.data); 
+                setData(result.data); // Kontrollera att detta är rätt väg
                 setLoading(false);
             } catch (error) {
                 setError(error.message);
@@ -53,9 +53,9 @@ const FetchBitcoinData = () => {
     return (
         <div>
             <ul>
-                {data.map((key, index) => (
+                {Object.keys(data).map((key, index) => (
                     <li key={index}>
-                        {data[key].name}: {data[key].price} USD
+                        {data[key].name}: {data[key].quote.USD.price} USD 
                     </li>
                 ))}
             </ul>
