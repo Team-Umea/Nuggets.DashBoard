@@ -1,5 +1,5 @@
-import React from 'react';
-import DecryptedText from '../DecryptedText';
+import React from "react";
+import DecryptedText from "../DecryptedText";
 
 const HeroVideo = () => {
   return (
@@ -16,12 +16,12 @@ const HeroVideo = () => {
             maxIterations={15}
             sequential={true}
             revealDirection="center"
-            className="text-8xl font-bold"
+            className="sm:text-8xl font-bold"
             encryptedClassName="text-xl"
             animateOn="view"
           />
         </h1>
-        <p className="mt-4 text-4xl">
+        <p className="mt-4 sm:text-4xl">
           <DecryptedText
             text="To the moooooon!"
             speed={100}
