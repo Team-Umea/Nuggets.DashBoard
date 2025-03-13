@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-
-/// Endpoints
-
-// Endpoint: /v1/cryptocurrency/quotes/latest - aktuella priser för en eller flera kryptovalutor.
-
-// Endpoint: /v1/cryptocurrency/listings/latest - hämta en lista över kryptovalutor med deras aktuella marknadsdata
-
-// Endpoint: /v1/cryptocurrency/info - hämta information om en specifik kryptovaluta.
-
-// Endpoint: /v1/global-metrics/quotes/latest - hämta globala marknadsdata, som total marknadsvärde.
-
+// json-server --watch db.json --port 3001
 
 
 const FetchBitcoinData = () => {
-    const URL = '/v1/cryptocurrency/info';
+    const URL = '';
     const APIKEY = '';
 
     const [data, setData] = useState([]);
