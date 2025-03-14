@@ -39,16 +39,15 @@ function SaveCalcForm() {
           Test our savings calculator
         </div>
       </div>
-      <h3 className="text-xl font-semibold text-gray-800 mb-2"></h3>
       <h5 className="text-3xl font-bold text-green-600">
         {" "}
-        ${Math.round(indexFutureValue)}
+        ${Math.round(indexFutureValue).toLocaleString()}
       </h5>
       <p className="text-gray-500 text-sm mb-4">
         Of which $
         {Math.round(
           indexFutureValue - (startAmount + monthlyDeposit * years * 12)
-        )}{" "}
+        ).toLocaleString()}{" "}
         in return
       </p>
 
